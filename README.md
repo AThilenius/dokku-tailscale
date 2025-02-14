@@ -14,6 +14,11 @@ Set an auth key or oauth client key to the global config:
 
 ```sh
 dokku config:set --global TS_AUTHKEY=tskey-client-00000000000000000-000000000000000000000000000000000
+
+# Optionally set TS_ACCEPT_DNS either globally or per-app to enable Magic DNS
+# However, this does NOT update /etc/resolv.conf to use 100.100.100.100 in the app container.
+# Use something like `dokku docker-options:add app-name deploy,run --dns=100.100.100.100` to set the DNS
+dokku config:set my-app TS_ACCEPT_DNS=1
 ```
 
 Presently, all apps will be tagged in the tailnet with `dokku`.
